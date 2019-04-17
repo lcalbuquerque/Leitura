@@ -6,14 +6,8 @@ import { Link } from 'react-router-dom'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 import Collapse from '@material-ui/core/Collapse'
-import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
-
- const styles = theme => ({
-    nested: {
-      paddingLeft: theme.spacing.unit * 4,
-    }
-  })
+import '../../App.css'
 
 class CategoryMenu extends Component{
 
@@ -25,7 +19,7 @@ class CategoryMenu extends Component{
 
   render (){
 
-    const { categories, classes } = this.props
+    const { categories } = this.props
     const { openCategories } = this.state
 
     return (
@@ -36,12 +30,12 @@ class CategoryMenu extends Component{
         <MenuItem onClick={this.handleClick}>
             <ListItemText inset primary="Categories" />
             {openCategories ? <ExpandLess /> : <ExpandMore />}
-        </MenuItem>
-        <Collapse in={openCategories} timeout="auto" unmountOnExit>
+            </MenuItem>
+            <Collapse in={openCategories} timeout="auto" unmountOnExit className="nested">
           <MenuList component="div" disablePadding>
             {categories && categories.map(c =>
-              <MenuItem component={Link} to={`/${c.name}`} key={c.name} className={classes.nested}>
-                <ListItemText inset primary={c.name}/>
+                        <MenuItem component={Link} to={`/${c.name}`} key={c.name}>
+                            <ListItemText inset primary={c.name} />
               </MenuItem>)}
           </MenuList>
         </Collapse>
@@ -54,4 +48,4 @@ CategoryMenu.propTypes = {
 	categories: PropTypes.array.isRequired
 }
 
-export default withStyles(styles)(CategoryMenu)
+export default CategoryMenu

@@ -7,7 +7,6 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import SortBy from './components/Utils/SortBy'
 import PostModal from './components/Post/PostModal'
@@ -15,15 +14,8 @@ import PostList from './components/Post/PostList'
 import PostDetails from './components/Post/PostDetails'
 import CategoryMenu from './components/Category/CategoryMenu'
 import { CONSTS } from './utils'
+import './App.css'
 
-const styles = {
-    appBar: {
-        background: '#696969'
-    },
-    sortBy: {
-        marginLeft: '80%'
-    }
-};
 
 //estado inicial de um novo post
 const defaultPostModal = {
@@ -102,12 +94,12 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div>
-                    <AppBar position="static" className={classes.appBar}>
-                        <Toolbar>
+                    <AppBar position="static">
+                        <Toolbar className="appBar">
                             <Typography variant="title" color="inherit">
                                 Projeto Leitura
                             </Typography>
-                            <SortBy style={classes.sortBy} onChange={sortPost}></SortBy>
+                            <SortBy style="sortBy" onChange={sortPost}></SortBy>
                             <Button color="inherit" onClick={this.handleOpenPostModal}>Add post</Button>
                         </Toolbar>
                     </AppBar>
@@ -117,7 +109,7 @@ class App extends Component {
                         handleChange={this.handlePostModalPropChange}>
                     </PostModal>
                     <Grid container spacing={0}>
-                        <Grid item xs={2} className={classes.navGrid}>
+                        <Grid item xs={2} className="navGrid">
                             <CategoryMenu categories={categories}></CategoryMenu>
                         </Grid>
                         <Grid item xs={10}>
@@ -154,7 +146,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(withStyles(styles)(App))
+export default connect(mapStateToProps,mapDispatchToProps)(App)

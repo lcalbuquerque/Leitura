@@ -7,7 +7,7 @@ const PostList = ({ posts, path, handleOpenPostModal}) => {
     return (
       <div>
         {posts &&
-          posts.map(p => <Post key={p.id} handleOpenPostModal={handleOpenPostModal} path={path} post={p}></Post>)}
+          posts.map(p => <Post key={p.id} handleOpenPostModal={handleOpenPostModal} path={path} post={p} />)}
       </div>
     )
 }

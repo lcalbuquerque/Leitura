@@ -1,17 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import PropTypes from 'prop-types'
-
-const styles = {
-  formControl: {
-    minWidth: 120
-  }
-}
+import '../../App.css'
 
 class CategoryUISelect extends Component {
 
@@ -33,10 +27,10 @@ class CategoryUISelect extends Component {
     const { post , classes, categories, onChange } = this.props
 
     return (
-      <FormControl className={classes.formControl}>
+      <FormControl>
         <InputLabel htmlFor="categorySelect">Category</InputLabel>
             <Select open={open} onClose={this.handleClose} onOpen={this.handleOpen}
-                value={post.category} onChange={onChange}
+                value={post.category} onChange={onChange} className="formControl"
                 inputProps={{ name: 'category', id: 'categorySelect' }}
         >
           <MenuItem value="">
@@ -61,4 +55,4 @@ CategoryUISelect.propTypes = {
 	onChange: PropTypes.func.isRequired
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(CategoryUISelect))
+export default connect(mapStateToProps)(CategoryUISelect)

@@ -1,0 +1,51 @@
+.cardActions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.timeStamp {
+    margin-bottom: 16px;
+    font-size: 54px
+}
+
+.comments {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.commentsLabel {
+    padding-left: 5px
+}
+
+.postBody {
+    padding-top: 120px;
+    padding-bottom: 10px;
+    padding-left: 10px
+}
+
+.comment {
+    padding-left: 200px;
+    padding-right: 200px
+}
+
+.commentsBar {
+    background-color: #CCCCCC;
+}
+
+.sortBy {
+    float: right;
+    margin-left: 80%;
+}
+
+.appBar {
+    background-color: #808080
+}
+
+.nested {
+    padding-left: 20px
+}
+
+.formControl {
+    min-width: 120px
+}

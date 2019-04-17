@@ -1,27 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withStyles } from '@material-ui/core/styles'
 import Comment from './Comment'
 import Typography from '@material-ui/core/Typography'
-import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import SortBy from '../Utils/SortBy'
 import Button from '@material-ui/core/Button'
 import PropTypes from 'prop-types'
 import { sortComment } from '../../actions/comments'
-
-const styles = theme => ({
-    comment: {
-        paddingLeft: '200px',
-        paddingRight: '200px'
-    },
-    commentsBar: {
-        background: '#1D272F',
-    },
-    sortBy: {
-        float: 'right'
-    }
-})
+import '../../App.css'
 
 const defaultComment = {
     id: '',
@@ -45,20 +31,20 @@ class CommentsList extends Component {
 
     render() {
 
-        const { comments, classes, postParentId, sortComment } = this.props
+        const { comments, postParentId, sortComment } = this.props
         const { showAddComment } = this.state
 
         return (
-            <div className={classes.comment}>
-                <AppBar position="static" className={classes.commentsBar}>
-                    <Toolbar>
+            <div className="comment">
+                
+                    <Toolbar className="commentsBar">
                         <Typography variant="title" color="inherit">
                             Comments
                         </Typography>
                         <SortBy onChange={sortComment} />
                         <Button color="inherit" onClick={this.showAddCommentElem}>Add comment</Button>
                     </Toolbar>
-                </AppBar>
+                
                 {showAddComment &&
                     <Comment key='newComment' initValue={{ ...defaultComment, parentId: postParentId }}
                         afterSaveOrCancel={this.hideAddCommentElem} isAdd={true} />}
@@ -84,7 +70,4 @@ CommentsList.propTypes = {
     postParent: PropTypes.object
 }
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(withStyles(styles)(CommentsList))
+export default connect(mapStateToProps, mapDispatchToProps)(CommentsList)

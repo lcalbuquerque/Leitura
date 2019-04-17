@@ -1,4 +1,4 @@
-//Este arquivo possui funções e constantaes que são usadas por alguns componentes
+// Funções e variáveis utilizadas pelo App
 
 export const sortFunc = (arr, prop, asc) => {
   if(prop){
@@ -9,7 +9,7 @@ export const sortFunc = (arr, prop, asc) => {
       else if(e1[prop] < e2[prop])
         return asc ? -1 : 1
       else
-        return asc ? 1 : -1 //e1[prop] > e2[prop]
+        return asc ? 1 : -1 
     })
     return arrCopy
   }
@@ -28,36 +28,13 @@ export const formatDateTime = (timestamp) => {
 export const CONSTS = {
   SORT_BY: {
     OPTIONS: {
-      SCORE_ASC: {
-        VALUE: 0,
-        PROP: 'voteScore',
-        TEXT: 'Vote Score (Low to High)',
-        ASC: true
-      },
-      SCORE_DESC: {
-        VALUE: 1,
-        PROP: 'voteScore',
-        TEXT: 'Vote Score (High to Low)',
-        ASC: false
-      },
-      DATE_ASC: {
-        VALUE: 2,
-        PROP: 'timestamp',
-        TEXT: 'Date (Low to High)',
-        ASC: true
-      },
-      DATE_DESC: {
-        VALUE: 3,
-        PROP: 'timestamp',
-        TEXT: 'Date (High to Low)',
-        ASC: false
-      }
+      SCORE_ASC: { VALUE: 0, PROP: 'voteScore', TEXT: 'Vote Score (Low to High)', ASC: true },
+      SCORE_DESC: { VALUE: 1, PROP: 'voteScore', TEXT: 'Vote Score (High to Low)', ASC: false },
+      DATE_ASC: { VALUE: 2, PROP: 'timestamp', TEXT: 'Date (Low to High)', ASC: true },
+      DATE_DESC: { VALUE: 3, PROP: 'timestamp', TEXT: 'Date (High to Low)', ASC: false }
     }
   },
   VOTE_SCORE: {
-    OPTIONS: {
-      UP: 'upVote',
-      DOWN: 'downVote'
-    }
+    OPTIONS: { UP: 'upVote', DOWN: 'downVote' }
   }
 }

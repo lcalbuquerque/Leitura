@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { deletePost, updatePostVoteScore } from '../../actions/posts'
 import { Link } from 'react-router-dom'
-import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import IconButton from '@material-ui/core/IconButton'
 import { TiEdit, TiTrash, TiEyeOutline, TiThMenuOutline } from 'react-icons/ti/'
@@ -11,30 +10,7 @@ import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import VoteScore from '../Utils/VoteScore'
 import { formatDateTime } from '../../utils'
-
-const styles = {
-    cardActions: {
-        display: 'flex',
-        justifyContent: 'flex-end'
-    },
-    timeStamp: {
-        marginBottom: 16,
-        fontSize: 14
-    },
-    comments: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-around'
-    },
-    commentsLabel: {
-        paddingLeft: 5
-    },
-    postBody: {
-        paddingTop: 120,
-        paddingBottom: 10,
-        paddingLeft: 10
-    },
-}
+import '../../App.css'
 
 class Post extends Component {
 
@@ -54,7 +30,7 @@ class Post extends Component {
 
     render() {
 
-        const { post, path, classes, handleOpenPostModal } = this.props
+        const { post, path, handleOpenPostModal } = this.props
         const isAdd = !!path
         const formattedDT = post ? formatDateTime(post.timestamp) : null
 
@@ -78,13 +54,13 @@ class Post extends Component {
                     </div>
                     <div style={{ marginLeft: '15px' }}>
                         <Grid container spacing={0}>
-                            <Grid item xs={6}>
+                            <Grid item xs={8}>
                                 <VoteScore voteFunc={this.clickVoteScore} voteValue={post.voteScore} />
                             </Grid>
-                            <Grid item xs={6} className={classes.cardActions}>
-                                <div className={classes.comments}>
+                            <div xs={6} className="cardActions">
+                                <div className="comments">
                                     <TiThMenuOutline />
-                                    <div className={classes.commentsLabel}>{`${post.commentCount} Comments`}</div>
+                                    <div className="commentsLabel">{`${post.commentCount} Comments`}</div>
                                 </div>
                                 {isAdd &&
                                     <Tooltip title="Details">
@@ -102,7 +78,7 @@ class Post extends Component {
                                         <TiTrash />
                                     </IconButton>
                                 </Tooltip>
-                            </Grid>
+                            </div>
                         </Grid>
                     </div>
                 </Card>}
@@ -117,4 +93,4 @@ Post.propTypes = {
     handleOpenPostModal: PropTypes.func.isRequired
 }
 
-export default connect()(withStyles(styles)(Post))
+export default connect()(Post)

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardActions from '@material-ui/core/CardActions'
@@ -16,13 +15,7 @@ import VoteScore from '../Utils/VoteScore'
 import Typography from '@material-ui/core/Typography'
 import { formatDateTime } from '../../utils'
 import { CONSTS } from '../../utils'
-
-const styles = {
-    cardActions: {
-        display: 'flex',
-        justifyContent: 'flex-end'
-    }
-}
+import '../../App.css'
 
 class Comment extends Component {
 
@@ -94,7 +87,7 @@ class Comment extends Component {
 
     render() {
 
-        const { classes, isAdd } = this.props
+        const { isAdd } = this.props
         const { comment, editting } = this.state
 
         const formattedDT = comment ? formatDateTime(comment.timestamp) : null
@@ -104,7 +97,7 @@ class Comment extends Component {
                 {comment && <Card key={comment.id}>
                     <CardContent>
                         {!isAdd && !editting &&
-                            <Typography className={classes.timeStamp} color="textSecondary">
+                            <Typography className="timeStamp" color="textSecondary">
                                 Created at: {formattedDT}
                             </Typography>
                         }
@@ -114,14 +107,14 @@ class Comment extends Component {
                             margin="normal" fullWidth  />
                         <TextField id="author" label="Author" disabled={!isAdd && !editting}
                             value={comment.author} onChange={this.handleChange('author')}
-                            margin="normal" fullWidth />
+                            margin="normal" />
                     </CardContent>
                     <CardActions>
                         <Grid container spacing={0}>
                             <Grid item xs={6}>
                                 {(!isAdd && !editting) && <VoteScore voteFunc={this.clickVoteScore} voteValue={comment.voteScore} />}
                             </Grid>
-                            <Grid item xs={6} className={classes.cardActions}>
+                            <Grid item xs={6} className="cardActions">
                                 {(isAdd || editting) && <Button color="inherit" onClick={this.onClickSave}> {isAdd ? 'Save' : 'Save Changes'} </Button>}
                                 {(isAdd || editting) && <Button color="inherit" onClick={this.onClickCancel}> Cancel </Button>}
                                 {!isAdd && !editting &&
@@ -151,4 +144,4 @@ Comment.propTypes = {
     afterSaveOrCancel: PropTypes.func
 }
 
-export default connect()(withStyles(styles)(Comment))
+export default connect()(Comment)
