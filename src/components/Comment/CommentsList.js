@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Comment from './Comment'
 import Typography from '@material-ui/core/Typography'
 import Toolbar from '@material-ui/core/Toolbar'
-import SortBy from '../Utils/SortBy'
+import SortBy from '../AuxUI/SortBy'
 import Button from '@material-ui/core/Button'
 import PropTypes from 'prop-types'
 import { sortComment } from '../../store/actions/comments'
@@ -36,7 +36,6 @@ class CommentsList extends Component {
 
         return (
             <div className="comment">
-                
                     <Toolbar className="commentsBar">
                         <Typography variant="title" color="inherit">
                             Comments

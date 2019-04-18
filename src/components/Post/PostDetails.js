@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Post from './Post'
 import CommentsList from '../Comment/CommentsList'
-import Divider from '@material-ui/core/Divider'
 import { getPostComments } from '../../store/actions/posts'
 import { sortComment } from '../../store/actions/comments'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
-import { CONSTS } from '../../utils'
+import { SORT_OPTIONS } from '../../utils'
 
 class PostDetails extends Component {
 
@@ -16,8 +15,8 @@ class PostDetails extends Component {
         loadComments(postId)
             .then(
                 () => sortComment({
-                    property: CONSTS.SORT_BY.OPTIONS.SCORE_DESC.PROP,
-                    ascending: CONSTS.SORT_BY.OPTIONS.SCORE_DESC.ASC
+                    property: SORT_OPTIONS.Score_Desc.prop,
+                    ascending: SORT_OPTIONS.Score_Desc.asc
                 })
             )
     }
@@ -31,7 +30,6 @@ class PostDetails extends Component {
                 {post &&
                     <div>
                         <Post post={post} handleOpenPostModal={handleOpenPostModal} />
-                        <Divider />
                         <CommentsList postParentId={post.id} />
                     </div>}
                 {!post &&

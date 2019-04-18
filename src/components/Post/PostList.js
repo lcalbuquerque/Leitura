@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 const PostList = ({ posts, path, handleOpenPostModal}) => {
     return (
-      <div>
+        <div style={{ marginTop: '55px' }}>
         {posts &&
           posts.map(p => <Post key={p.id} handleOpenPostModal={handleOpenPostModal} path={path} post={p} />)}
       </div>

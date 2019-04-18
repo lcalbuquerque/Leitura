@@ -26,7 +26,8 @@
 
 .comment {
     padding-left: 200px;
-    padding-right: 200px
+    padding-right: 200px;
+    margin-top: 50px;
 }
 
 .commentsBar {
@@ -35,11 +36,21 @@
 
 .sortBy {
     float: right;
-    margin-left: 80%;
+    margin-right: 50px;
+    margin-top: -10px;
 }
 
-.appBar {
-    background-color: #808080
+.header {
+    background-color: #808080;
+    font-size: 23px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    padding-left: 20px;
+    padding-top: 10px;
+    height: 40px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    color: white
 }
 
 .nested {
@@ -54,7 +65,7 @@
     font-size: 20px;
     list-style: none;
     margin: 20px;
-    padding-left: 70px
+    padding-left: 30px
 }
 
 .categoriaItem {
@@ -76,4 +87,67 @@
     color: white;
     padding: 5px;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.home {
+    width: 90%;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    color: #232121cc;
+    margin: 20px 10px 10px 10px;
+    
+}
+
+.homeLink {
+    display: inline-block;
+    margin-top: 2px;
+    height: 40px;
+    vertical-align: middle;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    color: #232121cc;
+    font-size: 20px;
+}
+
+.ativo {
+    color: #d00707cc
+}
+
+.homeIcon {
+    display: inline-block;
+    width: 50px
+}
+
+.addPost {
+    width: 60%;
+    color: white;
+    background-color: grey;
+    height: 30px;
+    border-radius: 4px;
+    text-align: center;
+    margin: 50px auto;
+    padding-top: 5px;
+    font-size: 20px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    cursor: pointer
+}
+
+.voteScore {
+    padding-top: 14px;
+    padding-left: 5px;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.post {
+    margin: 55px 0px -45px 0px;
+    border-radius: 4px;
+}
+
+.menu {
+    position: fixed;
+    margin: 60px;
 }

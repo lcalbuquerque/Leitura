@@ -8,7 +8,7 @@ import { TiEdit, TiTrash, TiEyeOutline, TiThMenuOutline } from 'react-icons/ti/'
 import Tooltip from '@material-ui/core/Tooltip'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
-import VoteScore from '../Utils/VoteScore'
+import VoteScore from '../AuxUI/VoteScore'
 import { formatDateTime } from '../../utils'
 import '../../App.css'
 
@@ -35,13 +35,13 @@ class Post extends Component {
         const formattedDT = post ? formatDateTime(post.timestamp) : null
 
         return (
-            <div style={{ marginBottom: '8px', marginTop: '8px', borderRadius: '4px' }}>
+            <div className="post">
                 {post && <Card key={post.id}>
                     <div style={{ padding: '15px' }} >
                         <div style={{ color: '#696363' }}>
                             Created at: {formattedDT}
                         </div>
-                        <h2 style={{ fontFamily: 'Helvetica', fontWeight: 'normal', margin: '8px 0px' }}>
+                        <h2 style={{ fontWeight: 'normal', margin: '8px 0px' }}>
                             {post.title}
                         </h2>
                         <div style={{ color: '#696363' }}>
@@ -55,7 +55,7 @@ class Post extends Component {
                     <div style={{ marginLeft: '15px' }}>
                         <Grid container spacing={0}>
                             <Grid item xs={8}>
-                                <VoteScore voteFunc={this.clickVoteScore} voteValue={post.voteScore} />
+                                <VoteScore computeVote={this.clickVoteScore} voteValue={post.voteScore} />
                             </Grid>
                             <div xs={6} className="cardActions">
                                 <div className="comments">

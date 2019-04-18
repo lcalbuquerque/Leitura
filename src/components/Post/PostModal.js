@@ -4,7 +4,7 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import TextField from '@material-ui/core/TextField'
-import CategoryUISelect from '../Utils/CategoryUISelect'
+import CategoryUISelect from '../AuxUI/CategoryUISelect'
 import Button from '@material-ui/core/Button'
 import PropTypes from 'prop-types'
 

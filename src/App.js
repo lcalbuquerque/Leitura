@@ -4,20 +4,14 @@ import { fetchPosts, savePost, updatePost, sortPost } from './store/actions/post
 import { connect } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Button from '@material-ui/core/Button'
-import SortBy from './components/Utils/SortBy'
+import SortBy from './components/AuxUI/SortBy'
 import PostModal from './components/Post/PostModal'
 import PostList from './components/Post/PostList'
 import PostDetails from './components/Post/PostDetails'
-import CategoryMenu from './components/Category/CategoryMenu'
-import { CONSTS } from './utils'
+import Menu from './components/Menu/Menu'
+import { SORT_OPTIONS } from './utils'
 import './App.css'
 
-
-//estado inicial de um novo post
 const defaultPostModal = {
     title: '',
     category: '',
@@ -37,8 +31,8 @@ class App extends Component {
         this.props.loadPosts()
             .then(
                 () => this.props.sortPost({
-                    property: CONSTS.SORT_BY.OPTIONS.SCORE_DESC.PROP,
-                    ascending: CONSTS.SORT_BY.OPTIONS.SCORE_DESC.ASC
+                    property: SORT_OPTIONS.Score_Desc.PROP,
+                    ascending: SORT_OPTIONS.Score_Desc.ASC
                 })
             )
     }
@@ -61,7 +55,7 @@ class App extends Component {
         // Validate Post
         if (!postModal.category || postModal.title.length < 3
             || postModal.author.length < 2 || postModal.body < 3) {
-            alert("Please full fill all fields");
+            alert("Please fill all fields");
             return false
         }
 
@@ -89,29 +83,20 @@ class App extends Component {
     render() {
 
         const { openModalPost, postModal } = this.state
-        const { categories, classes, sortPost } = this.props
+        const { categories, sortPost } = this.props
 
         return (
             <BrowserRouter>
                 <div>
-                    <AppBar position="static">
-                        <Toolbar className="appBar">
-                            <Typography variant="title" color="inherit">
-                                Projeto Leitura
-                            </Typography>
-                            <SortBy style="sortBy" onChange={sortPost}></SortBy>
-                            <Button color="inherit" onClick={this.handleOpenPostModal}>Add post</Button>
-                        </Toolbar>
-                    </AppBar>
-                    <PostModal open={openModalPost} post={postModal}
-                        handleClose={this.handleClosePostModal}
-                        handleSave={this.handleSavePostModal}
-                        handleChange={this.handlePostModalPropChange}>
-                    </PostModal>
+                    <div className="header">
+                        Projeto Leitura
+                            <SortBy onChange={sortPost} />
+                    </div>
+                    <PostModal open={openModalPost} post={postModal} handleClose={this.handleClosePostModal}
+                        handleSave={this.handleSavePostModal} handleChange={this.handlePostModalPropChange} />
                     <Grid container spacing={0}>
                         <Grid item xs={2} className="navGrid">
-                            <div className="categoriaTitulo">Categorias</div>
-                            <CategoryMenu categories={categories}></CategoryMenu>
+                            <Menu categories={categories} addPost={this.handleOpenPostModal}></Menu>
                         </Grid>
                         <Grid item xs={10}>
                             <Switch>
@@ -147,4 +132,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

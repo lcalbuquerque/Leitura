@@ -11,10 +11,10 @@ import Button from '@material-ui/core/Button'
 import { saveComment, deleteComment, updateComment, updateCommentVoteScore, updateCommentCount } from '../../store/actions/comments'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
-import VoteScore from '../Utils/VoteScore'
+import VoteScore from '../AuxUI/VoteScore'
 import Typography from '@material-ui/core/Typography'
 import { formatDateTime } from '../../utils'
-import { CONSTS } from '../../utils'
+import { Vote_Score } from '../../utils'
 import '../../App.css'
 
 class Comment extends Component {
@@ -33,11 +33,11 @@ class Comment extends Component {
         const { isAdd, afterSaveOrCancel } = this.props
         // Validate comment
         if (comment.body < 5 || comment.author < 2) {
-            alert("Please full fill all fields")
+            alert("Please fill all fields")
             return false
         }
         if (isAdd) {
-            //dispatch add new comment
+            // if OK, create comment
             this.props.dispatch(saveComment(comment))
                 .then(this.props.dispatch(updateCommentCount({ postId: comment.parentId, value: 1 })))
         } else {
@@ -78,9 +78,9 @@ class Comment extends Component {
         const { voteScore } = comment
         this.props.dispatch(updateCommentVoteScore(comment, option))
             .then(() => {
-                if (option === CONSTS.VOTE_SCORE.OPTIONS.UP)
+                if (option === Vote_Score.up)
                     this.setState({ comment: { ...comment, voteScore: voteScore + 1 } })
-                if (option === CONSTS.VOTE_SCORE.OPTIONS.DOWN)
+                if (option === Vote_Score.down)
                     this.setState({ comment: { ...comment, voteScore: voteScore - 1 } })
             })
     }
@@ -101,18 +101,15 @@ class Comment extends Component {
                                 Created at: {formattedDT}
                             </Typography>
                         }
-                        <TextField id="commentBody" label="Body" multiline
-                            rowsMax="10" disabled={!isAdd && !editting}
-                            value={comment.body} onChange={this.handleChange('body')}
-                            margin="normal" fullWidth  />
+                        <TextField id="commentBody" label="Body" multiline rowsMax="10" disabled={!isAdd && !editting}
+                            value={comment.body} onChange={this.handleChange('body')} margin="normal" fullWidth  />
                         <TextField id="author" label="Author" disabled={!isAdd && !editting}
-                            value={comment.author} onChange={this.handleChange('author')}
-                            margin="normal" />
+                            value={comment.author} onChange={this.handleChange('author')} margin="normal" />
                     </CardContent>
                     <CardActions>
                         <Grid container spacing={0}>
                             <Grid item xs={6}>
-                                {(!isAdd && !editting) && <VoteScore voteFunc={this.clickVoteScore} voteValue={comment.voteScore} />}
+                                {(!isAdd && !editting) && <VoteScore computeVote={this.clickVoteScore} voteValue={comment.voteScore} />}
                             </Grid>
                             <Grid item xs={6} className="cardActions">
                                 {(isAdd || editting) && <Button color="inherit" onClick={this.onClickSave}> {isAdd ? 'Save' : 'Save Changes'} </Button>}
