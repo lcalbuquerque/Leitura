@@ -42,7 +42,7 @@ class Post extends Component {
                             Created at: {formattedDT}
                         </div>
                         <h2 style={{ fontWeight: 'normal', margin: '8px 0px' }}>
-                            {post.title}
+                            <Link to={`/${post.category}/${post.id}`} className="homeLink">{post.title}</Link>
                         </h2>
                         <div style={{ color: '#696363' }}>
                             Author: {post.author}
