@@ -3,8 +3,7 @@ import MenuList from '@material-ui/core/MenuList'
 import MenuItem from '@material-ui/core/MenuItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import { Link } from 'react-router-dom'
-import ExpandLess from '@material-ui/icons/ExpandLess'
-import ExpandMore from '@material-ui/icons/ExpandMore'
+import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti'
 import Collapse from '@material-ui/core/Collapse'
 import PropTypes from 'prop-types'
 import '../../App.css'
@@ -28,8 +27,8 @@ class CategoryMenu extends Component{
             <ListItemText inset primary="Home"/>
         </MenuItem>
         <MenuItem onClick={this.handleClick}>
-            <ListItemText inset primary="Categories" />
-            {openCategories ? <ExpandLess /> : <ExpandMore />}
+                <ListItemText inset primary="Categories" />
+                {openCategories ? <TiArrowSortedUp size="25" /> : <TiArrowSortedDown size="25" />}
             </MenuItem>
             <Collapse in={openCategories} timeout="auto" unmountOnExit className="nested">
           <MenuList component="div" disablePadding>

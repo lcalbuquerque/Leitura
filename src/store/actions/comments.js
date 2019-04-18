@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes'
-import * as ServerAPI from '../utils/ServerAPI'
+import * as ServerAPI from '../../utils/ServerAPI'
 import uuidv4 from 'uuid/v4'
 
 export const addComment = (comment) => ({

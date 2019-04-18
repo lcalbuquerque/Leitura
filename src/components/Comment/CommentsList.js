@@ -6,7 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import SortBy from '../Utils/SortBy'
 import Button from '@material-ui/core/Button'
 import PropTypes from 'prop-types'
-import { sortComment } from '../../actions/comments'
+import { sortComment } from '../../store/actions/comments'
 import '../../App.css'
 
 const defaultComment = {

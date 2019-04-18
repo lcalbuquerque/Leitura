@@ -27,7 +27,7 @@ const PostModal = ({ open, post, handleClose, handleSave, handleChange }) => {
                         Cancel
                     </Button>
                     <Button onClick={handleSave} color="primary">
-                        {(post && post.id) ? 'Edit' : 'Add'}
+                        {(post && post.id) ? 'Save' : 'Add'}
                     </Button>
                 </DialogActions>
             </Dialog>

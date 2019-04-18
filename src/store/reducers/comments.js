@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes'
-import { sortFunc } from '../utils'
+import { sortFunc } from '../../utils'
 
 function comments (state = [], action){
     switch(action.type){

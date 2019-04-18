@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { fetchCategories } from './actions/categories'
-import { fetchPosts, savePost, updatePost, sortPost } from './actions/posts'
+import { fetchCategories } from './store/actions/categories'
+import { fetchPosts, savePost, updatePost, sortPost } from './store/actions/posts'
 import { connect } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
