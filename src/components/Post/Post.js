@@ -49,7 +49,7 @@ class Post extends Component {
                         </div>
                         {!isAdd &&
                             <div style={{ color: '#696363', marginTop: '20px' }}>
-                                {post.body}
+                              {post.body}
                             </div>}
                     </div>
                     <div style={{ marginLeft: '15px' }}>
@@ -62,12 +62,11 @@ class Post extends Component {
                                     <TiThMenuOutline />
                                     <div className="commentsLabel">{`${post.commentCount} Comments`}</div>
                                 </div>
-                                {isAdd &&
                                     <Tooltip title="Details">
                                         <IconButton component={Link} to={`/${post.category}/${post.id}`} color="inherit">
                                             <TiEyeOutline />
                                         </IconButton>
-                                    </Tooltip>}
+                                    </Tooltip>
                                 <Tooltip title="Edit">
                                     <IconButton onClick={() => handleOpenPostModal(post)} color="inherit">
                                         <TiEdit />

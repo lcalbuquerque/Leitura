@@ -110,6 +110,7 @@ class App extends Component {
                     </PostModal>
                     <Grid container spacing={0}>
                         <Grid item xs={2} className="navGrid">
+                            <div className="categoriaTitulo">Categorias</div>
                             <CategoryMenu categories={categories}></CategoryMenu>
                         </Grid>
                         <Grid item xs={10}>
