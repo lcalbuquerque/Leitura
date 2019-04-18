@@ -19,19 +19,12 @@ const VoteScore = ({ computeVote, voteValue }) => {
                 </Tooltip>
             </Grid>
             <Grid item>
-                {voteValue === 0 ?
-                        <IconButton aria-owns={null} aria-haspopup="false" aria-label="Dislike"
-                            color="inherit" disabled >
-                            <TiThumbsDown />
-                        </IconButton>
-                    : 
-                    <Tooltip id="tooltip-detail" title="Dislike">
-                        <IconButton aria-owns={null} aria-haspopup="false" aria-label="Dislike"
-                            color="inherit" onClick={() => computeVote(Vote_Score.down)} >
-                            <TiThumbsDown />
-                        </IconButton>
-                    </Tooltip>
-                    }
+                <Tooltip id="tooltip-detail" title="Dislike">
+                    <IconButton aria-owns={null} aria-haspopup="false" aria-label="Dislike"
+                        color="inherit" onClick={() => computeVote(Vote_Score.down)} >
+                        <TiThumbsDown />
+                    </IconButton>
+                </Tooltip>
             </Grid>
             <Grid item >
                 <div className="voteScore">

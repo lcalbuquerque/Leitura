@@ -3,12 +3,15 @@
     "",
     "\\src",
     "\\src\\components",
+    "\\src\\components\\AuxUI",
     "\\src\\components\\Comment",
+    "\\src\\components\\Menu",
     "\\src\\components\\Post",
     "\\src\\store",
     "\\src\\store\\actions",
-    "\\src\\store\\reducers"
+    "\\src\\store\\reducers",
+    "\\src\\utils"
   ],
-  "SelectedNode": "\\src\\components\\Post\\Post.js",
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }

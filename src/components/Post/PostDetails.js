@@ -5,7 +5,6 @@ import CommentsList from '../Comment/CommentsList'
 import { getPostComments } from '../../store/actions/posts'
 import { sortComment } from '../../store/actions/comments'
 import PropTypes from 'prop-types'
-import Typography from '@material-ui/core/Typography'
 import { SORT_OPTIONS } from '../../utils'
 
 class PostDetails extends Component {
@@ -25,6 +24,8 @@ class PostDetails extends Component {
 
         const { post, handleOpenPostModal } = this.props
 
+        console.log(post)
+
         return (
             <div>
                 {post &&
@@ -33,9 +34,9 @@ class PostDetails extends Component {
                         <CommentsList postParentId={post.id} />
                     </div>}
                 {!post &&
-                    <Typography variant="headline" component="h2" align="center" >
-                        Either this post does not exist or it was deleted!
-            </Typography>}
+                    <div style={{ marginTop: '200px', marginLeft: '400px' }}>
+                        Post not found or deleted !
+                    </div>}
             </div>
         )
     }
