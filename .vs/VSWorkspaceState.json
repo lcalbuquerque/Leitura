@@ -9,9 +9,8 @@
     "\\src\\components\\Post",
     "\\src\\store",
     "\\src\\store\\actions",
-    "\\src\\store\\reducers",
-    "\\src\\utils"
+    "\\src\\store\\reducers"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\src\\components\\Post\\Post.js",
   "PreviewInSolutionExplorer": false
 }

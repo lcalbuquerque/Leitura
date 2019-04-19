@@ -11,6 +11,7 @@ import Grid from '@material-ui/core/Grid'
 import VoteScore from '../AuxUI/VoteScore'
 import { formatDateTime } from '../../utils'
 import '../../App.css'
+import { Redirect } from 'react-router-dom'
 
 class Post extends Component {
 
@@ -18,7 +19,7 @@ class Post extends Component {
         this.props.dispatch(deletePost(post))
             .then(() => {
                 if (!this.props.path) {
-                    this.props.history.push('/home')
+                    <Redirect to='/' />
                 }
             })
     }
